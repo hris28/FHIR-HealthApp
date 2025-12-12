@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 1 - CRUD Interface</title>
+
+  <!-- Global site styles -->
+  <link rel="stylesheet" href="https://hris28.github.io/style.css">
+
+  <!-- Local healthapp styles -->
+  <link rel="stylesheet" href="healthapp.css">
+  <link rel="stylesheet" href="activities.css">
+
+  <!-- W3 + fonts -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+<!-- HealthApp navbar (for files inside /activities/) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card">
+
+    <!-- Back to personal site -->
+    <a href="https://hris28.github.io/projects.html"
+       class="w3-bar-item w3-button w3-grey">
+      PROJECTS
+    </a>
+
+    <!-- HealthApp main pages (one level up) -->
+    <a href="../index.html" class="w3-bar-item w3-button">OVERVIEW</a>
+    <a href="../notes.html" class="w3-bar-item w3-button">NOTES</a>
+
+    <!-- Activities dropdown -->
+    <div class="w3-dropdown-hover">
+      <a class="w3-bar-item w3-button">
+        ACTIVITIES <i class="fa fa-caret-down"></i>
+      </a>
+
+      <div class="w3-dropdown-content w3-bar-block w3-card">
+        <a href="activity1.html" class="w3-bar-item w3-button">
+          Activity 1 – CRUD
+        </a>
+        <a href="activity2.html" class="w3-bar-item w3-button">
+          Activity 2 – Records
+        </a>
+        <a href="activity3.html" class="w3-bar-item w3-button">
+          Activity 3 – Charts
+        </a>
+        <a href="activity4.html" class="w3-bar-item w3-button">
+          Activity 4 – Map
+        </a>
+      </div>
+    </div>
+
+    <!-- Final app (one level up) -->
+    <a href="../final.html" class="w3-bar-item w3-button">FINAL APP</a>
+
+  </div>
+</div>
+
+
+
+<div class="page-card">
+
+  <h2>Assignment 1: CRUD</h2>
+  <p> Here we use: </p>
+  <ul>
+    <li>CRUD (Create, Read, Update, Delete) mutation operations</li> 
+    <li>DOM manipulation</li>
+    <li>Event listeners</li>
+    <li>Passing references (binding)</li>
+    <li>Updating an item in the same position (not deleting + re-adding)</li>
+    <li>Basic data structures</li>
+    <li>Local JS arrays, client-owned</li>
+    <li>Identification: Object reference + index</li>
+</ul>
+    <p>Using only JavaScript and an in-memory array, nothing is saved to a database.</p>
+    <p>Process: JS array &rarr; object reference &rarr; DOM row</p>
+
+    <!-- Category selector -->
+        <label for="categorySelect"><strong>Select category:</strong></label>
+        <select id="categorySelect">
+            <option value="patients">Patients</option>
+            <option value="medications">Medications</option>
+            <option value="diagnoses">Diagnoses</option>
+        </select>
+
+  <!-- Input Field 
+  <input id="newItemInput" class="w3-input w3-border" placeholder="Enter item name"> -->
+
+  <!-- Add Button -->
+  <button id="addBtn" class="btn-add">Add Item</button>
+
+  <hr>
+
+  <!-- Display List <ul id="itemList"></ul> -->
+   <!-- Table output -->
+    <table id="crudTable">
+            <thead id="tableHead"></thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="activity1.js"></script>
+
+</body>
+</html>

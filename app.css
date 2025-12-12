@@ -1,0 +1,53 @@
+:root { --bg:#f4f7f9; --card:#fff; --border:#e6e9ee; --text:#111; --muted:#667; }
+
+body { 
+  /* Global nav is fixed, so offset app content */
+  padding-top: 64px;
+
+  margin:0; 
+  font-family: Lato, system-ui, Arial; 
+  background:var(--bg); 
+  color:var(--text); 
+}
+.topbar {
+  position: relative;
+  z-index: 900;
+ background:#fff; border-bottom:1px solid var(--border);
+  display:flex; justify-content:space-between; align-items:center; padding:12px 16px; }
+.brand { font-weight:700; }
+.controls { display:flex; gap:10px; align-items:center; }
+
+.tabs {
+  position: sticky;
+  top: 64px; /* sits below global nav */
+  z-index: 800;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+.tab { border:1px solid var(--border); background:#fff; padding:8px 10px; border-radius:10px; cursor:pointer; }
+.tab.active { background:#eef2f5; }
+
+.grid { padding:16px; max-width:1100px; margin:0 auto; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
+.hidden { display:none; }
+
+.row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin:10px 0; }
+.split { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+@media (max-width: 900px){ .split { grid-template-columns: 1fr; } }
+
+.input { padding:10px; border:1px solid var(--border); border-radius:10px; flex:1; min-width:240px; }
+
+.table { width:100%; border-collapse:collapse; margin-top:10px; }
+.table th, .table td { border-bottom:1px solid var(--border); padding:10px; text-align:left; }
+.table th { background:#eef2f5; }
+
+.btn { cursor:pointer; border:none; padding:8px 10px; border-radius:10px; font-size:14px; }
+.btn-add { background:#2b7cff; color:white; }
+.btn-edit { background:#777; color:white; }
+.btn-del { background:#e74c3c; color:white; }
+
+.chart { width:100%; height:360px; margin-top:12px; }
+.map { width:100%; height:460px; border-radius:14px; overflow:hidden; border:1px solid var(--border); }
+
+.notes { padding-left:18px; }
+.muted { color:var(--muted); font-size:13px; }

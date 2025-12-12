@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 4 – Mapping with Leaflet</title>
+
+  <!-- Global site styles -->
+  <link rel="stylesheet" href="https://hris28.github.io/style.css">
+
+  <!-- Local healthapp styles -->
+  <link rel="stylesheet" href="healthapp.css">
+  <link rel="stylesheet" href="activities.css">
+
+  <!-- W3 + fonts -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  </script>
+
+  <!-- FHIR Client -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js">
+  </script>
+</head>
+
+<body>
+
+<!-- HealthApp navbar (for files inside /activities/) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card">
+
+    <!-- Back to personal site -->
+    <a href="https://hris28.github.io/projects.html"
+       class="w3-bar-item w3-button w3-grey">
+      PROJECTS
+    </a>
+
+    <!-- HealthApp main pages (one level up) -->
+    <a href="../index.html" class="w3-bar-item w3-button">OVERVIEW</a>
+    <a href="../notes.html" class="w3-bar-item w3-button">NOTES</a>
+
+    <!-- Activities dropdown -->
+    <div class="w3-dropdown-hover">
+      <a class="w3-bar-item w3-button">
+        ACTIVITIES <i class="fa fa-caret-down"></i>
+      </a>
+
+      <div class="w3-dropdown-content w3-bar-block w3-card">
+        <a href="activity1.html" class="w3-bar-item w3-button">
+          Activity 1 – CRUD
+        </a>
+        <a href="activity2.html" class="w3-bar-item w3-button">
+          Activity 2 – Records
+        </a>
+        <a href="activity3.html" class="w3-bar-item w3-button">
+          Activity 3 – Charts
+        </a>
+        <a href="activity4.html" class="w3-bar-item w3-button">
+          Activity 4 – Map
+        </a>
+      </div>
+    </div>
+
+    <!-- Final app (one level up) -->
+    <a href="../final.html" class="w3-bar-item w3-button">FINAL APP</a>
+
+  </div>
+</div>
+
+
+
+<div class="page-card">
+  <h2>Assignment 4: Mapping with Leaflet</h2>
+
+  <p>
+    Find some sort of geographic information in the FHIR API and create a map that displays elements using something like Leaflet or Google Maps. When I hover over each marker, a tooltip should display a basic label. When I click on one of the markers, a marker bubble should display more details about the element/location.
+  </p>
+  <p>Only locations with geographic coordinates are displayed. Many FHIR Location records contain address data without latitude/longitude.</p>
+
+  <div class="controls">
+    <label for="filterSelect"><strong>Filter Locations:</strong></label>
+<select id="filterSelect">
+  <option value="ALL">All Locations</option>
+  <option value="MAPPABLE">Locations with Coordinates</option>
+  <option value="UNMAPPABLE">Locations without Coordinates</option>
+</select>
+
+  </div>
+
+<div id="map"></div>
+</div>
+
+<script src="activity4.js"></script>
+</body>
+</html>

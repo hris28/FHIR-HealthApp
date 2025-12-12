@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FHIR Health App – Notes</title>
+
+  <!-- Global site styling -->
+  <link rel="stylesheet" href="https://hris28.github.io/style.css">
+
+  <!-- Local sandbox styles -->
+  <link rel="stylesheet" href="healthapp.css">
+
+  <!-- Fonts, W3CSS, Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+<!-- HealthApp navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card">
+    <a href="https://hris28.github.io/projects.html" class="w3-bar-item w3-button w3-grey">PROJECTS</a>
+    <a href="index.html" class="w3-bar-item w3-button">OVERVIEW</a>
+    <a href="notes.html" class="w3-bar-item w3-button">NOTES</a>
+    
+    <!-- Activities dropdown -->
+    <div class="w3-dropdown-hover">
+      <button class="w3-button">
+        ACTIVITIES <i class="fa fa-caret-down"></i>
+      </button>
+
+      <div class="w3-dropdown-content w3-bar-block w3-card">
+        <a href="activities/activity1.html" class="w3-bar-item w3-button">
+          Activity 1 - CRUD
+        </a>
+        <a href="activities/activity2.html" class="w3-bar-item w3-button">
+          Activity 2 – Records
+        </a>
+        <a href="activities/activity3.html" class="w3-bar-item w3-button">
+          Activity 3 – Charts
+        </a>
+        <a href="activities/activity4.html" class="w3-bar-item w3-button">
+          Activity 4 – Map
+        </a>
+      </div>
+    </div>
+
+    <a href="final.html" class="w3-bar-item w3-button">FINAL APP</a>
+  </div>
+</div>
+
+  <!-- background -->
+  <div class="main-message">
+    <div class="flex-container">
+      <div class="heading-home">
+        CHIP 690: JS/FHIR App Dev - Notes and Practice
+      </div>
+    </div>
+  </div>
+  <!-- Main content wrapper -->
+  <div class="main-container">
+
+    <!-- Main Content -->
+    <div class="sandbox-container">
+
+      <!-- Intro section -->
+      <section>
+        <h2>JavaScript Sandbox for FHIR Development</h2>
+        <p>
+          This page helps to practice essential JavaScript skills needed in 
+          building healthcare applications using FHIR and eventually integrate
+          with EHR systems like Epic through SMART-on-FHIR.
+        </p>
+      </section>
+
+      <hr>
+
+      <!-- Lesson 2 Example: Buttons -->
+      <div class="sandbox-container">
+
+        <div class="demo-card">
+          <h3>1. Interactive Buttons (<code>this</code> keyword, event listeners)</h3>
+          <p>Click any button to rename it. This show how this</code> refers to the clicked element and how to update DOM content dynamically.</p>
+
+          <button id="btn1" class="demo-btn">Button 1</button>
+          <button id="btn2" class="demo-btn">Button 2</button>
+          <button id="btn3" class="demo-btn">Button 3</button>
+        </div>
+
+        <!-- Lesson 2 Example: List demo -->
+        <div class="demo-card">
+          <h3>2. Updating List Items with JavaScript</h3>
+          <p>Click the button to double all values in the list below.
+            This teaches:
+        <br> selecting sets of DOM nodes  
+        <br> loops  
+        <br> <code>innerHTML</code> updates  
+        <br> <code>parseInt()</code> for numeric operation
+          </p>
+
+          <button id="doubleListBtn" class="w3-button w3-blue">Double Numbers</button>
+
+          <ul id="list2">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+          </ul>
+        </div>
+
+        <!-- CRUD Intro -->
+        <section>
+          <h2>Next Step: CRUD Patient Interface</h2>
+          <p>
+            Soon, we’ll build a full interface on:
+            <ul>
+              <li>Create: Add a patient to a list</li>
+              <li>Read: Display the list</li>
+              <li>Update: Edit a patient’s info</li>
+              <li>Delete: Remove a patient</li>
+            </ul>
+            This will first use local JavaScript arrays, then using actual
+            <code>Patient</code> resources retrieved from a FHIR server.
+          </p>
+        </section>
+
+        <hr>
+
+        <!-- CRUD UI -->
+        <div class="sandbox-container">
+
+    <div class="demo-card">
+      <h3>3. CRUD Demo (Simple String-Based Patient List)</h3>
+      <p>
+        This introduces CRUD: Create, Read, Update, Delete.
+        Here, each “patient” is just a string.  
+        Later, these will become full FHIR Patient objects.
+      </p>
+
+      <!-- Input + Add button -->
+      <input id="newPatientInput" class="w3-input w3-border" placeholder="Enter patient name">
+      <button id="addPatientBtn" class="w3-button w3-green w3-margin-top">Add Patient</button>
+
+      <!-- List container -->
+          <ul id="patientList" class="crud-list">
+            <!-- Items will be added here dynamically -->
+    </div>
+  </div>
+
+  <hr>
+
+        <!-- lesson 4 Advanced CRUD (shopping list) -->
+    <div class="sandbox-container">
+
+    <div class="demo-card">
+      <h3>4. Advanced CRUD (Bind, Delete Buttons, DOM Rebuilding)</h3>
+      <p>
+        
+      </p>
+
+      <input id="new_item" class="w3-input w3-border" placeholder="Add item...">
+      <button id="add_button" class="w3-button w3-green w3-margin-top">Add Item</button>
+
+      <ul id="shopping_list"></ul>
+    </div>
+  </div>
+
+    <hr>
+
+    <!-- lesson 4B Box-moving -->
+    <div class="sandbox-container">
+
+    <div class="demo-card">
+      <h3>5. Box-Moving Interface (Async, Delay, Cancelation)</h3>
+      <p>
+        Shows:
+        <br>• event bubbling  
+        <br>• <code>stopPropagation()</code>  
+        <br>• async delays (<code>setTimeout</code>)  
+        <br>• cancelable operations  
+        <br>• Promise-like delayed actions  
+      </p>
+
+      <button id="btnAddBox" class="w3-button w3-blue">Add Box</button>
+
+      <div id="boxes">
+        <div id="group1" class="group"></div>
+        <div id="group2" class="group"></div>
+      </div>
+    </div>
+  </div>
+
+    <hr>
+
+    <!-- lesson 5 jQuery -->
+    <div class="sandbox-container">
+
+    <div class="demo-card">
+      <h3>6. jQuery Intro (select/remove/append/events)</h3>
+      <p>
+        jQuery simplifies DOM manipulation by wrapping elements in an
+        easy-to-use API.  
+        This prepares you for AJAX calls and API-based CRUD.
+      </p>
+
+      <button id="btnRunSample1">Run Vanilla JS Version</button>
+      <button id="btnRunSample2">Run jQuery Version</button>
+
+      <div id="links">
+        <a href="javascript:;" title="hi there!">Junk 1</a>
+        <a>Junk 2</a>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </div>
+
+  <hr>
+
+    <!-- lesson 6 FHIR Client -->
+     <div class="sandbox-container">
+
+    <div class="demo-card">
+      <h3>7. SMART-on-FHIR Client (FHIR API Intro)</h3>
+      <p>
+        Here we the official <code>fhirclient.js</code> library 
+        to communicate with a FHIR test server.
+      </p>
+
+      <button onclick="showPatients();" class="w3-button w3-blue">Search Patients</button>
+      <button onclick="addPatient();" class="w3-button w3-green">Add Patient</button>
+
+      <table id="table">
+        <thead>
+          <th>ID</th><th>First Name</th><th>Last Name</th><th>Actions</th>
+        </thead>
+        <tbody id="patientResults"></tbody>
+      </table>
+
+      <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+    </div>
+  </div>
+
+  </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bottom">
+    <p>FHIR Health App Sandbox – Built for learning JavaScript + FHIR.</p>
+
+    <div class="socials">
+      <a href="https://www.instagram.com/hrcdream/" class="fa fa-instagram"></a>
+      <a href="https://www.linkedin.com/in/hrishika-roychoudhury-466672186/" class="fa fa-linkedin"></a>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+  <script src="l2.js"></script>
+  <script src="l3.js"></script>
+  <script src="l4.js"></script>
+  <script src="l5.js"></script>
+  <script src="l6.js"></script>
+
+</body>
+</html>

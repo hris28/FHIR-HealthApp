@@ -1,0 +1,102 @@
+
+/* Activities Nav Bar Dropdown */
+.w3-dropdown-content {
+  min-width: 220px;
+}
+
+.w3-dropdown-content a {
+  white-space: normal;
+}
+
+
+/* Container for sandbox content */
+.sandbox-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  background-color: #fafafa;
+}
+
+/* Simple card for JS demos */
+.demo-card {
+  background-color: white;
+  padding: 16px;
+  margin: 24px 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Buttons */
+.demo-btn {
+  padding: 10px 20px;
+  margin: 6px 4px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.demo-btn:hover {
+  background-color: #ddd;
+}
+
+/* Keep hero styling intact but center content properly */
+.main-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sandbox-container ul li {
+  margin: 6px 0;
+  font-size: 1.1em;
+}
+
+/* CRUD List Styling */
+
+.crud-input-row {
+  max-width: 400px;
+  margin-top: 12px;
+}
+
+.crud-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+.crud-list li {
+  background-color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.crud-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.crud-btn {
+  padding: 4px 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9em;
+  border-radius: 4px;
+}
+
+.crud-edit {
+  background-color: #ffc107;
+}
+
+.crud-delete {
+  background-color: #e53935;
+  color: white;
+}
+
+.crud-btn:hover {
+  opacity: 0.85;
+}

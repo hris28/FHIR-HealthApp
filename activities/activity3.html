@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 3 – Highcharts</title>
+
+  <!-- Global site styles -->
+  <link rel="stylesheet" href="https://hris28.github.io/style.css">
+
+  <!-- Local healthapp styles -->
+  <link rel="stylesheet" href="healthapp.css">
+  <link rel="stylesheet" href="activities.css">
+
+  <!-- W3 + fonts -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+
+  <!-- FHIR client -->
+  <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+
+  <!-- Highcharts -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+
+<body>
+
+<!-- HealthApp navbar (for files inside /activities/) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card">
+
+    <!-- Back to personal site -->
+    <a href="https://hris28.github.io/projects.html"
+       class="w3-bar-item w3-button w3-grey">
+      PROJECTS
+    </a>
+
+    <!-- HealthApp main pages (one level up) -->
+    <a href="../index.html" class="w3-bar-item w3-button">OVERVIEW</a>
+    <a href="../notes.html" class="w3-bar-item w3-button">NOTES</a>
+
+    <!-- Activities dropdown -->
+    <div class="w3-dropdown-hover">
+      <a class="w3-bar-item w3-button">
+        ACTIVITIES <i class="fa fa-caret-down"></i>
+      </a>
+
+      <div class="w3-dropdown-content w3-bar-block w3-card">
+        <a href="activity1.html" class="w3-bar-item w3-button">
+          Activity 1 – CRUD
+        </a>
+        <a href="activity2.html" class="w3-bar-item w3-button">
+          Activity 2 – Records
+        </a>
+        <a href="activity3.html" class="w3-bar-item w3-button">
+          Activity 3 – Charts
+        </a>
+        <a href="activity4.html" class="w3-bar-item w3-button">
+          Activity 4 – Map
+        </a>
+      </div>
+    </div>
+
+    <!-- Final app (one level up) -->
+    <a href="../final.html" class="w3-bar-item w3-button">FINAL APP</a>
+
+  </div>
+</div>
+
+
+<div class="page-card">
+  <h2>Assignment 3: Highcharts</h2>
+
+  <p>
+    Pick some quantitative data from our FHIR API and create a bar or column chart in high charts showing a breakdown of the relevant totals or averages by one or more dimensions.
+  </p>
+
+  <p>
+    I chose to visualize patient vital signs using FHIR Observation resources. Vital signs are standardized using LOINC codes, which allows consistent retrieval and quantitative analysis. I queried observations from the SMART Health IT demo server, transformed the results into a time-series dataset, and rendered the data using Highcharts to show trends over time.
+  </p>
+
+  <p>The visualization correctly reflects the data returned by the FHIR API. <br>
+However, because the SMART demo server contains synthetic, multi-patient data, the resulting time-series is not clinically meaningful without additional constraints such as patient scoping, unit normalization, and observation filtering.</p>
+
+<p>Rather than loading all patients indiscriminately, the application derives the patient list from Observation resources for the selected vital sign, ensuring that every selectable patient produces a valid visualization. Some vital signs are not consistently available for all patients in the SMART demo dataset. The application therefore dynamically filters patient options based on data availability and is able to handle empty results.</p>
+
+  <!-- Controls -->
+  <div class="controls">
+    <select id="patientSelect"></select>
+    <label for="vitalSelect"><strong>Select Vital Sign:</strong></label>
+    <select id="vitalSelect">
+      <option value="weight">Body Weight</option>
+      <option value="height">Body Height</option>
+      <option value="heartrate">Heart Rate</option>
+      <option value="bp">Blood Pressure</option>
+    </select>
+
+    <button id="loadBtn" class="btn-add">Load Chart</button>
+    </div>
+
+    <!-- Chart -->
+    <div id="container"></div>
+  </div>
+
+  <!-- JS -->
+  <script src="activity3.js"></script>
+
+</body>
+</html>

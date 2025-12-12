@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CHIP 690 Activities</title>
+  <meta name="description" content="Practice site for building a FHIR Health App with JavaScript.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Global site styling (original stylesheet) -->
+  <link rel="stylesheet" href="https://hris28.github.io/style.css">
+  <!-- Local sandbox-specific styles -->
+  <link rel="stylesheet" href="healthapp.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="activities.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+
+  <!-- W3.CSS and Font Awesome for simple styling + icons -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+<!-- HealthApp navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card">
+    <a href="https://hris28.github.io/projects.html" class="w3-bar-item w3-button w3-grey">PROJECTS</a>
+    <a href="index.html" class="w3-bar-item w3-button">OVERVIEW</a>
+    <a href="notes.html" class="w3-bar-item w3-button">NOTES</a>
+    
+    <!-- Activities dropdown -->
+    <div class="w3-dropdown-hover">
+      <button class="w3-button">
+        ACTIVITIES <i class="fa fa-caret-down"></i>
+      </button>
+
+      <div class="w3-dropdown-content w3-bar-block w3-card">
+        <a href="activities/activity1.html" class="w3-bar-item w3-button">
+          Activity 1 - CRUD
+        </a>
+        <a href="activities/activity2.html" class="w3-bar-item w3-button">
+          Activity 2 – Records
+        </a>
+        <a href="activities/activity3.html" class="w3-bar-item w3-button">
+          Activity 3 – Charts
+        </a>
+        <a href="activities/activity4.html" class="w3-bar-item w3-button">
+          Activity 4 – Map
+        </a>
+      </div>
+    </div>
+
+    <a href="final.html" class="w3-bar-item w3-button">FINAL APP</a>
+  </div>
+</div>
+
+  <div class="page-card" style="margin-top:80px">
+  <h1>Project Activities</h1>
+
+  <p>
+    These activities were completed incrementally to explore different aspects
+    of building applications on top of the FHIR API.
+  </p>
+
+  <ul class="activity-list">
+    <li>
+      <a href="activity1.html">Activity 1: Patient CRUD</a><br/>
+      <span class="muted">Reading, creating, editing, and deleting patient data</span>
+    </li>
+
+    <li>
+      <a href="activity2.html">Activity 2: Clinical Records</a><br/>
+      <span class="muted">Conditions, medications, and related resources</span>
+    </li>
+
+    <li>
+      <a href="activity3.html">Activity 3: Highcharts</a><br/>
+      <span class="muted">Quantitative visualization of clinical observations</span>
+    </li>
+
+    <li>
+      <a href="activity4.html">Activity 4: Leaflet Mapping</a><br/>
+      <span class="muted">Geographic visualization of healthcare locations</span>
+    </li>
+  </ul>
+</div>
+
+  <!-- Footer -->
+  <footer class="bottom">
+    <p>FHIR Health App.</p>
+
+    <div class="socials">
+      <a href="https://www.instagram.com/hrcdream/" class="fa fa-instagram"></a>
+      <a href="https://www.linkedin.com/in/hrishika-roychoudhury-466672186/" class="fa fa-linkedin"></a>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
+</body>
+</html>

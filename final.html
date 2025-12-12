@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>FHIR Dashboard Final</title>
+
+    <!-- Global site styles -->
+  <link rel="stylesheet" href="https://hris28.github.io/style.css">
+
+  <!-- Local healthapp styles -->
+<link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="healthapp.css">
+  <link rel="stylesheet" href="activities.css">
+
+  <!-- W3 + fonts -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+
+  <!-- SMART on FHIR client -->
+  <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+
+  <!-- Highcharts -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+</head>
+<body>
+
+<!-- HealthApp navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card">
+    <a href="https://hris28.github.io/projects.html" class="w3-bar-item w3-button w3-grey">PROJECTS</a>
+    <a href="index.html" class="w3-bar-item w3-button">OVERVIEW</a>
+    <a href="notes.html" class="w3-bar-item w3-button">NOTES</a>
+    
+    <!-- Activities dropdown -->
+    <div class="w3-dropdown-hover">
+      <button class="w3-button">
+        ACTIVITIES <i class="fa fa-caret-down"></i>
+      </button>
+
+      <div class="w3-dropdown-content w3-bar-block w3-card">
+        <a href="activities/activity1.html" class="w3-bar-item w3-button">
+          Activity 1 - CRUD
+        </a>
+        <a href="activities/activity2.html" class="w3-bar-item w3-button">
+          Activity 2 – Records
+        </a>
+        <a href="activities/activity3.html" class="w3-bar-item w3-button">
+          Activity 3 – Charts
+        </a>
+        <a href="activities/activity4.html" class="w3-bar-item w3-button">
+          Activity 4 – Map
+        </a>
+      </div>
+    </div>
+
+    <a href="final.html" class="w3-bar-item w3-button">FINAL APP</a>
+  </div>
+</div>
+
+  <header class="topbar">
+    <div class="brand">FHIR Dashboard</div>
+
+    <div class="controls">
+      <label>Patient:</label>
+      <select id="patientSelect"></select>
+
+      <button id="refreshBtn" class="btn btn-add">Refresh</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="overview">Overview</button>
+    <button class="tab" data-tab="records">Records</button>
+    <button class="tab" data-tab="analytics">Analytics</button>
+    <button class="tab" data-tab="map">Map</button>
+  </nav>
+
+  <main class="grid">
+    <!-- Overview -->
+    <section class="card tabpanel" id="tab-overview">
+      <h2>Patient Overview</h2>
+      <div id="patientCard" class="patient-card"></div>
+
+      <div class="row">
+        <button id="editPatientBtn" class="btn btn-edit">Edit Patient</button>
+        <button id="deletePatientBtn" class="btn btn-del">Delete Patient</button>
+        <button id="addPatientBtn" class="btn btn-add">Add Patient</button>
+      </div>
+
+      <h3>Conditions</h3>
+      <table class="table">
+        <thead><tr><th>ID</th><th>Condition</th><th>Code</th></tr></thead>
+        <tbody id="conditionsBody"></tbody>
+      </table>
+    </section>
+
+    <!-- Records -->
+    <section class="card tabpanel hidden" id="tab-records">
+      <h2>Clinical Records</h2>
+
+      <div class="split">
+        <div>
+          <h3>Medication Requests</h3>
+          <table class="table">
+            <thead><tr><th>ID</th><th>Medication</th><th>Status</th></tr></thead>
+            <tbody id="medsBody"></tbody>
+          </table>
+        </div>
+
+        <div>
+          <h3>Local Notes (client-owned)</h3>
+          <div class="row">
+            <input id="noteInput" class="input" placeholder="Add a note about this patient..." />
+            <button id="addNoteBtn" class="btn btn-add">Add Note</button>
+          </div>
+          <ul id="notesList" class="notes"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analytics -->
+    <section class="card tabpanel hidden" id="tab-analytics">
+      <h2>Patient Analytics</h2>
+
+  <div class="controls">
+    <label>Vital:</label>
+    <select id="vitalSelect">
+      <option value="weight">Body Weight</option>
+      <option value="height">Body Height</option>
+      <option value="heartrate">Heart Rate</option>
+    </select>
+
+        <label>Chart:</label>
+        <select id="chartSelect">
+          <option value="line">Line</option>
+          <option value="column">Column</option>
+        </select>
+
+        <button id="addObsBtn" class="btn btn-add">Add Observation</button>
+      </div>
+
+      <div id="chart" class="chart"></div>
+      <small>Charts reflect available synthetic data from the SMART Health IT demo server and are intended to demonstrate visualization techniques rather than clinical trends.</small>
+      <small>Not all patients have data for all Vitals categories. Such cases will be shown.</small>
+
+      <h3>Distribution of Observation Types (Sample from Patient Record)</h3>
+      <div id="breakdownChart" class="chart"></div>
+      
+    </section>
+
+    <!-- Map -->
+    <section class="card tabpanel hidden" id="tab-map">
+      <h2>Care Context Map</h2>
+
+      <div class="row">
+        <label>Filter:</label>
+        <select id="locFilterSelect">
+          <option value="ALL">All w/ Coordinates</option>
+          <option value="NAME_ELECTRIC">Name: Electric City Pediatrics</option>
+          <option value="NAME_SCRANTON">Name: Scranton Medical Center</option>
+        </select>
+
+        <button id="reloadMapBtn" class="btn btn-add">Reload Map</button>
+      </div>
+
+      <div id="map" class="map"></div>
+      <p class="muted" id="mapHint"></p>
+    </section>
+  </main>
+
+  <script src="fhir.js"></script>
+  <script src="ui.js"></script>
+  <script src="charts.js"></script>
+  <script src="map.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

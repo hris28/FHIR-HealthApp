@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 2 - FHIR Query Tables</title>
+
+  <!-- Global site styles -->
+  <link rel="stylesheet" href="https://hris28.github.io/style.css">
+
+  <!-- Local healthapp styles -->
+  <link rel="stylesheet" href="healthapp.css">
+  <link rel="stylesheet" href="activities.css">
+
+  <!-- W3 + fonts -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+
+  <!-- Load the SMART on FHIR JavaScript client -->
+  <script 
+  src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js">
+</script>
+
+</head>
+
+<body>
+
+<!-- HealthApp navbar (for files inside /activities/) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card">
+
+    <!-- Back to personal site -->
+    <a href="https://hris28.github.io/projects.html"
+       class="w3-bar-item w3-button w3-grey">
+      PROJECTS
+    </a>
+
+    <!-- HealthApp main pages (one level up) -->
+    <a href="../index.html" class="w3-bar-item w3-button">OVERVIEW</a>
+    <a href="../notes.html" class="w3-bar-item w3-button">NOTES</a>
+
+    <!-- Activities dropdown -->
+    <div class="w3-dropdown-hover">
+      <a class="w3-bar-item w3-button">
+        ACTIVITIES <i class="fa fa-caret-down"></i>
+      </a>
+
+      <div class="w3-dropdown-content w3-bar-block w3-card">
+        <a href="activity1.html" class="w3-bar-item w3-button">
+          Activity 1 – CRUD
+        </a>
+        <a href="activity2.html" class="w3-bar-item w3-button">
+          Activity 2 – Records
+        </a>
+        <a href="activity3.html" class="w3-bar-item w3-button">
+          Activity 3 – Charts
+        </a>
+        <a href="activity4.html" class="w3-bar-item w3-button">
+          Activity 4 – Map
+        </a>
+      </div>
+    </div>
+
+    <!-- Final app (one level up) -->
+    <a href="../final.html" class="w3-bar-item w3-button">FINAL APP</a>
+
+  </div>
+</div>
+
+
+
+<div class="page-card">
+
+  <h2>Assignment 2: FHIR Query Tables</h2>
+  <p>Query the mock FHIR API (SMART Health IT demo server) and retrieve structured healthcare data (FHIR resources) about a patient's medications, encounters, diagnoses or test results or something, and list them in a table with JavaScript and DOM manipulation.</p>
+    <p>Process: FHIR JSON &rarr; resource.id &rarr; DOM row. Request &rarr; Parse &rarr; Display.</p>
+    <p>Data is server-owned.</p>
+    <p>
+  Patient search matches names on the FHIR server.
+  Observation search returns recent records.
+</p>
+
+
+    <!-- Buttons trigger READ operations only
+     <div class="controls">
+        <button onclick="loadMedications()">Load Medications</button>
+        <button onclick="loadConditions()">Load Diagnoses</button>
+    </div>
+  -->
+
+  <div class="controls">
+    <label>
+      Resource:
+      <select id="resourceSelect">
+        <option value="Patient">Patient</option>
+        <option value="Observation">Observation</option>
+      </select>
+    </label>
+
+    <input id="searchInput" placeholder="Search term (name / keyword)">
+    <button id="searchBtn">Search</button>
+    <button id="addBtn" class="btn-add">Add</button>
+  </div>
+
+  <hr>
+
+  <!-- Table -->
+  <table>
+    <thead id="tableHead"></thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+</div>
+
+<!-- JS -->
+<script src="activity2.js"></script>
+
+</body>
+</html>

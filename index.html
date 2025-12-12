@@ -1,274 +1,123 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FHIR Health App Sandbox – Hrishika Roychoudhury</title>
+  <meta name="description" content="Practice site for building a FHIR Health App with JavaScript.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<html lang="en"><head>
-        <title> Hrishika Roychoudhury </title>
-        <meta name="description" content="resume website for Hrishika">
-        <meta name="keywords" content="information literacy, information tools, information, tasks, hard coding">
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
+  <!-- Global site styling (original stylesheet) -->
+  <link rel="stylesheet" href="https://hris28.github.io/style.css">
+  <!-- Local sandbox-specific styles -->
+  <link rel="stylesheet" href="healthapp.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="activities.css">
 
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&amp;display=swap" rel="stylesheet">
-        <!-- W3.CSS 4.15 December 2020 by Jan Egil and Borge Refsnes -->
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <base target="_top"><!-- Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
-        License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License) -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
 
-        <!-- CryptoJS Library - NOT USED -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+  <!-- W3.CSS and Font Awesome for simple styling + icons -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        
-        <script src="https://smtpjs.com/v3/smtp.js"></script>
-        
-        <!-- import the webpage's javascript file(s) -->
-        <script src="./nav.js"></script>
+</head>
 
-        <!-- SmtpJS package using MailSlurp Server --><!-- Server-side Google script that is supposed to write something in the logs. -->
-        
-        
-          google.script.run.doSomething();
-        <script></script>
+<body>
 
-   </head>
+<!-- HealthApp navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card">
+    <a href="https://hris28.github.io/projects.html" class="w3-bar-item w3-button w3-grey">PROJECTS</a>
+    <a href="index.html" class="w3-bar-item w3-button">OVERVIEW</a>
+    <a href="notes.html" class="w3-bar-item w3-button">NOTES</a>
+    
+    <!-- Activities dropdown -->
+    <div class="w3-dropdown-hover">
+      <button class="w3-button">
+        ACTIVITIES <i class="fa fa-caret-down"></i>
+      </button>
 
-   <body>
-
-    <!-- Navbar (sit on top) -->
-    <div class="w3-top">
-      <div class="w3-bar w3-card w3-animate-top w3-white" id="myNavbar">
-        <a class="w3-bar-item w3-button w3-hover-black w3-right" onclick="toggleFunction()" title="Toggle Navigation Instructions">
-          <i class="fa fa-eye"></i>
+      <div class="w3-dropdown-content w3-bar-block w3-card">
+        <a href="activities/activity1.html" class="w3-bar-item w3-button">
+          Activity 1 - CRUD
         </a>
-        <a href="index.html" class="w3-bar-item w3-button">HOME</a>
-        <a href="about.html" class="w3-bar-item w3-button"><i class="fa fa-pencil"></i> ABOUT</a>
-        <div class="dropdown">
-        <a href="classes.html" class="w3-bar-item w3-button" id="navDrop"><i class="fa fa-th"></i> CLASSES <i class="fa fa-caret-down"></i></a>
-        <ul id="dropContent" class="dropdown-content w3-hide">
-        <br>
-          <li class="dropdown-submenu"><a id="dropTwo" href="inls161.html">INLS 161 <i class="fa fa-caret-down"></i></a>
-            <ul id="contTwo" class="dropdown-content w3-hide">
-              <li><a href="https://uncch.instructure.com/courses/32480">Canvas</a></li>
-              <li><a href="https://ils.unc.edu/courses/2023_fall/inls161_001/index.html#first">Main Site</a></li>
-            </ul>
-          </li><li class="dropthree-submenu"><a id="dropThree" href="inls201.html">INLS 201 <i class="fa fa-caret-down"></i></a>
-            <ul id="contThree" class="dropdown-content w3-hide">
-              <li><a href="https://uncch.instructure.com/courses/32510">Canvas</a></li>
-              <li><a href="https://aeshin.org/teaching/inls-201/2023/fa/">Main Site</a></li>
-            </ul>
-          </li><li><a href="https://uncch.instructure.com/courses/35694">MATH 381</a></li>
-          <li><a href="https://uncch.instructure.com/courses/38366">NSCI 221</a></li>
-          <li><a href="https://uncch.instructure.com/courses/32668">CHEM 241</a></li>
-          </ul>
-        </div>
-
-        <script>
-          document.getElementById("navDrop").onmouseover = function() {mouseOver()};
-          document.getElementById("navDrop").onmouseout = function() {mouseOut()};
-          
-          document.getElementById("dropContent").onmouseover = function() {mouseOver()};
-          document.getElementById("dropContent").onmouseout = function() {mouseOut()};
-
-          function mouseOver() {
-            var s = document.getElementById("dropContent");
-            if (s.className.indexOf("w3-show") == -1) {
-              s.className = s.className.replace(" w3-hide", " w3-show");
-            }
-          }
-
-          function mouseOut() {
-            var h = document.getElementById("dropContent");
-            if (h.className.indexOf("w3-hide") == -1) {
-              h.className = h.className.replace(" w3-show", " w3-hide");
-            }
-          }
-
-          document.getElementById("dropTwo").onmouseover = function() {twoOver()};
-          document.getElementById("dropTwo").onmouseout = function() {twoOut()};
-          
-          document.getElementById("contTwo").onmouseover = function() {twoOver()};
-          document.getElementById("contTwo").onmouseout = function() {twoOut()};
-
-          function twoOver() {
-            var s = document.getElementById("contTwo");
-            if (s.className.indexOf("w3-show") == -1) {
-              s.className = s.className.replace(" w3-hide", " w3-show");
-            }
-          }
-
-          function twoOut() {
-            var h = document.getElementById("contTwo");
-            if (h.className.indexOf("w3-hide") == -1) {
-              h.className = h.className.replace(" w3-show", " w3-hide");
-            }
-          }
-
-          document.getElementById("dropThree").onmouseover = function() {threeOver()};
-          document.getElementById("dropThree").onmouseout = function() {threeOut()};
-          
-          document.getElementById("contThree").onmouseover = function() {threeOver()};
-          document.getElementById("contThree").onmouseout = function() {threeOut()};
-
-          function threeOver() {
-            var s = document.getElementById("contTwo");
-            if (s.className.indexOf("w3-show") == -1) {
-              s.className = s.className.replace(" w3-hide", " w3-show");
-            }
-          }
-
-          function threeOut() {
-            var h = document.getElementById("contTwo");
-            if (h.className.indexOf("w3-hide") == -1) {
-              h.className = h.className.replace(" w3-show", " w3-hide");
-            }
-          }
-        </script>
-        
-        <a href="interests.html" class="w3-bar-item w3-button"><i class="fa fa-code"></i> INTERESTS</a>
-      </div>
-
-      <div id="navDemo" class="w3-bar-block w3-white w3-hide" onclick="toggleFunction()">
-        <p class="w3-bar-item" onclick="toggleFunction()">
-          <b><em>Just a toggle function</em></b>
-          <br>
-          <small>:)</small>
-        </p>
+        <a href="activities/activity2.html" class="w3-bar-item w3-button">
+          Activity 2 – Records
+        </a>
+        <a href="activities/activity3.html" class="w3-bar-item w3-button">
+          Activity 3 – Charts
+        </a>
+        <a href="activities/activity4.html" class="w3-bar-item w3-button">
+          Activity 4 – Map
+        </a>
       </div>
     </div>
 
+    <a href="final.html" class="w3-bar-item w3-button">FINAL APP</a>
+  </div>
+</div>
 
-    <div class="main-message">
-      <div class="flex-container">
-        <div class="heading-home">
-          HRISHIKA ROYCHOUDHURY
-        </div>
+  <div class="page-card" style="margin-top:80px">
+  <h1>FHIR Health Dashboard</h1>
+
+  <p>
+    This project explores the use of the <strong>FHIR healthcare data standard</strong>
+    to build interactive web applications for patient data visualization,
+    clinical records, and geographic context.
+  </p>
+  <p>
+    The application integrates:
+  </p>
+
+  <ul>
+    <li>Patient records and demographics</li>
+    <li>Clinical observations and medications</li>
+    <li>Quantitative data visualizations</li>
+    <li>Geographic context</li>
+  </ul>
+
+  <div class="w3-row-padding">
+
+    <div class="w3-third">
+      <div class="w3-card w3-padding">
+        <h3>Notes</h3>
+        <p>Includes organized technical notes from class lectures.</p>
+        <a href="notes.html" class="w3-button w3-blue">View Notes</a>
       </div>
     </div>
 
-        
-        <h2>Send me a message!</h2>
-    
-        <!-- This mailform is nonfunctional as I've tried multiple ways of 
-          implementing the server-side script however was unable to make it work. 
-          I am still keeping the html here and up on the page, but I have client-script 
-          later in the page for the mailing functionality instead and am using functional 
-          server-side script elsewhere. Just wanted to let you know! -->
-        <form id="mailForm">
-          <input type="text" id="name" placeholder="Your Name" required="">
-          <input type="email" id="email" placeholder="Your Email" required="">
-        <br>
-      <br>
-          <textarea id="message" placeholder="Your Message" required=""></textarea>
-        <br>
-      <br>
-          <button type="button" onclick="sendEncryptedMail()">Send</button>
-    
-      </form>
+    <div class="w3-third">
+      <div class="w3-card w3-padding">
+        <h3>Activities</h3>
+        <p>Incremental assignments exploring FHIR APIs, charts, and maps.</p>
+        <a href="activities.html" class="w3-button w3-blue">View Activities</a>
+      </div>
+    </div>
 
-      <script>
-        function sendEncryptedMail() {
-          var name = document.getElementById('name').value;
-          var email = document.getElementById('email').value;
-          var message = document.getElementById('message').value;
+    <div class="w3-third">
+      <div class="w3-card w3-padding">
+        <h3>Final Application</h3>
+        <p>Integrated patient dashboard with analytics and mapping.</p>
+        <a href="final.html" class="w3-button w3-green">Launch App</a>
+      </div>
+    </div>
 
-          Email.send({
-            SecureToken : "48ef7f87b8cdafec0f2c969557b7b888da86e0e38126c87f0cc37ca377b1244b",
-            To : '297f0a5a-6306-4b04-a753-bce5ded8de77@mailslurp.mx',
-            From : JSON.stringify({email}),
-            Subject : "Message from" + JSON.stringify({name}),
-            Body : JSON.stringify({message})
-          }).then(mes => alert(mes));
-        }
-        </script>
-  
-      <!--
-      <script>
-          function sendEncryptedMail() {
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var message = document.getElementById('message').value;
+  </div>
+</div>
 
-            fetch('http://127.0.0.1:5000/getKey')
-            .then(response => response.json())
-            .then(keyData => {
-                var key = CryptoJS.enc.Utf8.parse(keyData.key);
-                var iv = CryptoJS.lib.WordArray.random(16);
-                var encryptedData = CryptoJS.AES.encrypt(JSON.stringify({name, email, message}), key, {iv: iv}).toString();
+  <!-- Footer -->
+  <footer class="bottom">
+    <p>FHIR Health App.</p>
 
-                // send encrypted data to server
-                fetch('http://127.0.0.1:5000/sendMail', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({data: encryptedData, iv: CryptoJS.enc.Hex.stringify(iv)})
-                })
-                .then(response => response.json())
-                .then(data => alert(data.message));
-            });
-        }
-      </script>
-      -->
+    <div class="socials">
+      <a href="https://www.instagram.com/hrcdream/" class="fa fa-instagram"></a>
+      <a href="https://www.linkedin.com/in/hrishika-roychoudhury-466672186/" class="fa fa-linkedin"></a>
+    </div>
+  </footer>
 
-<br>
-      <footer>
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 
-        <div class="bottom">
-          <h2><script type="text/javascript">
-            /*<![CDATA[*/
-
-            /***********************************************
-            * Encrypt Email script- Please keep notice intact
-            * Tool URL: http://www.dynamicdrive.com/emailriddler/
-            * **********************************************/
-            // Encrypted version of: hrishikarc [at] *****.*** 
-
-            var emailriddlerarray=[104,114,105,115,104,105,107,97,114,99,64,103,109,97,105,108,46,99,111,109]
-            var encryptedemail_id82='' //variable to contain encrypted email 
-            for (var i=0; i<emailriddlerarray.length; i++)
-            encryptedemail_id82+=String.fromCharCode(emailriddlerarray[i])
-
-            document.write('<a href="mailto:'+encryptedemail_id82+'">Contact Me</a>')
-          </script><a href="mailto:hrishikarc@gmail.com">Contact Me</a>
-          </h2>
-          <div class="socials">
-            <a href="https://www.instagram.com/hrcdream/" class="fa fa-instagram"></a>
-            <a href="https://www.linkedin.com/in/hrishika-roychoudhury-466672186/" class="fa fa-linkedin"></a>
-            <a href="https://www.facebook.com/hrishika.roychoudhury/" class="fa fa-facebook-square"></a>
-          </div>
-
-        <br>
-        <em style="color:grey;">Page Last Updated: <script type="text/javascript">
-          var days = new Array(8);
-            days[1] = "Sunday";
-            days[2] = "Monday";
-            days[3] = "Tuesday";
-            days[4] = "Wednesday";
-            days[5] = "Thursday";
-            days[6] = "Friday";
-            days[7] = "Saturday";
-					var months = new Array(13);
-            months[1] = "January";
-            months[2] = "February";
-            months[3] = "March";
-            months[4] = "April";
-            months[5] = "May";
-            months[6] = "June";
-            months[7] = "July";
-            months[8] = "August";
-            months[9] = "September";
-            months[10] = "October";
-            months[11] = "November";
-            months[12] = "December";
-          var dateObj = new Date(document.lastModified)
-          var wday = days[dateObj.getDay() + 1]
-          var lmonth = months[dateObj.getMonth() + 1]
-          var date = dateObj.getDate()
-          var fyear = dateObj.getYear()
-          if (fyear < 2000) fyear = fyear + 1900
-          document.write("" + wday + ", " + date + " " + lmonth + " " + fyear)
-          /* var year = new Date();
-          document.write(year.getFullYear()); */
-        </script>Tuesday, 12 December 2023 </em>
-        </div>
-      </footer>
-   
-
-</body></html>
+</body>
+</html>
